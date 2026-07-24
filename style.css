@@ -32,12 +32,12 @@ header{
     display: flex;
 }
 
-header > a{
+header > .a{
     display:flex;
     text-decoration: none;
 }
 
-header > a >#imagem_logo {
+header > .a >#imagem_logo {
     margin-left: auto;
     padding-top: 10px;
     width: 50px;
@@ -47,7 +47,7 @@ header > a >#imagem_logo {
     
 }
 
-header > a > #texto_titulo {
+header > .a > #texto_titulo {
     text-align: center;
     font-family: Poppins, Arial, Helvetica, sans-serif;
     color: #ff9500;
@@ -253,3 +253,28 @@ main > #explicao a{
     margin-top: 41px;
 }
 
+.botao_voltar {
+    margin-top: 40px;
+    padding: 0;
+}
+
+.botao_voltar > button {
+    margin-left: 2px;
+    background-color: #125189;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 200px;
+    height: 40px;
+    font-size: 1.2em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.botao_voltar button > span > img {
+    width: 20px;
+    height: 20px;
+    margin-left: 4px;
+    margin-bottom: -3px;
+}
