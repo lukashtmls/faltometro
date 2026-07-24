@@ -167,7 +167,6 @@ main > #texto_resultado{
     font-weight: 600;
     font-size: 140%;
     color: #125189
-
 }
 
 .contador {
@@ -191,8 +190,8 @@ main > #texto_resultado{
     color: white;
     border: none;
     border-radius: 8px;
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     font-size: 1.2em;
     font-weight: 700;
     cursor: pointer;
@@ -201,6 +200,13 @@ main > #texto_resultado{
 
 .btn_contador:hover {
     transform: scale(1.05);
+}
+
+.resultados2 {
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 110%;
+    color: #125189
 }
 
 main > #texto_creditos{

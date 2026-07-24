@@ -43,11 +43,13 @@
 
         <input id="input_porcentagem" type="number"  placeholder="0 a 25" min="0" max="25" step="1" required>
 
-        <button name = "botao_calcular" id = "botao_calcular" onclick = "calcular()">
+        <button name = "botao_calcular" id = "botao_calcular" onclick = "calcular()" >
             Calcular
         </button>
 
         <p id="texto_resultado"></p>
+
+        <hr>
 
         <h1>Posso faltar amanhã?</h1>
 
@@ -131,6 +133,15 @@
             Calcular
         </button>
 
+        <div id="res_mat" class="resultados2"></div>
+        <div id="res_lin" class="resultados2"></div>
+        <div id="res_hum" class="resultados2"></div>
+        <div id="res_nat" class="resultados2"></div>
+        <div id="res_tec" class="resultados2"></div>
+        <div id="res_pv" class="resultados2"></div>
+        <div id="res_pa" class="resultados2"></div>
+
+
         <hr>
 
         <p id="texto_creditos">
@@ -162,7 +173,7 @@
 
         function calcular() {
 
-            var txt = document.getElementById("texto_resultado")
+            var txt = document.querySelector('p#texto_resultado')
             var porcentagemInput = document.getElementById("input_porcentagem")
             var areaSelecionada = document.querySelector('input[name="area"]:checked')
             if (!areaSelecionada) {
@@ -224,6 +235,7 @@
                 return
             }
         }
+
         function mudar(qual, numero) {
             var total = 0
             document.querySelectorAll('.input_materias2 input').forEach(function(input) {
@@ -240,7 +252,84 @@
         }
 
         function calcular_dois() {
-            var 
+            var mat = Number(document.querySelector('input#input_matematica2').value)
+            var lin = Number(document.querySelector('input#input_linguagens2').value)
+            var hum = Number(document.querySelector('input#input_humanas2').value)
+            var nat = Number(document.querySelector('input#input_natureza2').value)
+            var tec = Number(document.querySelector('input#input_tecnico2').value)
+            var pv = Number(document.querySelector('input#input_pv2').value)
+            var pa = Number(document.querySelector('input#input_pa2').value)
+            var res_mat = document.querySelector('div#res_mat')
+            var res_lin = document.querySelector('div#res_lin')
+            var res_hum = document.querySelector('div#res_hum')
+            var res_nat = document.querySelector('div#res_nat')
+            var res_tec = document.querySelector('div#res_tec')
+            var res_pv = document.querySelector('div#res_pv')
+            var res_pa = document.querySelector('div#res_pa')
+
+            if (mat >= 1) {
+                var totalhora = 120
+                var res = Math.floor(((mat*50)/(totalhora*60)*100)*100)/100
+
+                res_mat.innerHTML = `+${res}% de faltas em Matemática`
+            }  else {
+                res_mat.innerHTML = ""
+            }
+            
+            if (lin >= 1) {
+                var totalhora = 200
+                var res = Math.floor(((lin*50)/(totalhora*60)*100)*100)/100
+
+                res_lin.innerHTML = `+${res}% de faltas em Linguagens`
+            } else {
+                res_lin.innerHTML = ""
+            }
+
+            if (hum >= 1) {
+                var totalhora = 160
+                var res = Math.floor(((hum*50)/(totalhora*60)*100)*100)/100
+
+                res_hum.innerHTML = `+${res}% de faltas em Humanas`
+            } else {
+                res_hum.innerHTML = ""
+            }
+
+            if (nat >= 1) {
+                var totalhora = 120
+                var res = Math.floor(((nat*50)/(totalhora*60)*100)*100)/100
+
+                res_nat.innerHTML = `+${res}% de faltas em Natureza`
+            } else {
+                res_nat.innerHTML = ""
+            }
+
+            if (tec >= 1) {
+                var totalhora = 240
+                var res = Math.floor(((tec*50)/(totalhora*60)*100)*100)/100
+
+                res_tec.innerHTML = `+${res}% de faltas no Técnico`
+            } else {
+                res_tec.innerHTML = ""
+            }
+
+            if (pv >= 1) {
+                var totalhora = 40
+                var res = Math.floor(((pv*50)/(totalhora*60)*100)*100)/100
+
+                res_pv.innerHTML = `+${res}% de faltas em Projeto de Vida`
+            } else {
+                res_pv.innerHTML = ""
+            }
+
+            if (pa >= 1) {
+                var totalhora = 120
+                var res = Math.floor(((pa*50)/(totalhora*60)*100)*100)/100
+
+                res_pa.innerHTML = `+${res}% de faltas em Projeto do ano`
+            } else {
+                res_pa.innerHTML = ""
+            }
+
         }
 
     </script>
