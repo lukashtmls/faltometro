@@ -245,7 +245,7 @@
             var val = Number(el.value) + numero
 
             if (val < 0) val = 0
-            if (numero > 0 && total >= 99999999) return
+            if (numero > 0 && total >= 300) return
 
             el.value = val === 0 ? '' : val
         }
