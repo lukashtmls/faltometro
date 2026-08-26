@@ -1,337 +1,379 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title>Calculo de faltas</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <header>
-        <div class="a">
-            <img id="imagem_logo"src="favicon.png" alt="Logo" name = "imagem_favicon" id = "imagem_favicon">
+      <div class="a">
+        <img
+          id="imagem_logo"
+          src="favicon.png"
+          alt="Logo"
+          name="imagem_favicon"
+          id="imagem_favicon"
+        />
 
-            <h1 id="texto_titulo">
-                Faltômetro
-            </h1>
-        </div>
+        <h1 id="texto_titulo">Faltômetro</h1>
+      </div>
     </header>
 
     <main>
+      <h1>Quantas aulas posso faltar?</h1>
 
-        <h1>Quantas aulas posso faltar?</h1>
+      <p id="texto_escolha">Escolha qual área você quer saber sobre:</p>
 
-        <p id="texto_escolha">
-            Escolha qual área você quer saber sobre:
-        </p>
+      <div class="input_materias">
+        <input
+          type="radio"
+          name="area"
+          value="matematica"
+          id="input_matematica"
+        />
+        Matemática <br />
+        <input
+          type="radio"
+          name="area"
+          value="linguagens"
+          id="input_linguagens"
+        />
+        Linguagens <br />
+        <input type="radio" name="area" value="humanas" id="input_humanas" />
+        Humanas <br />
+        <input type="radio" name="area" value="natureza" id="input_natureza" />
+        Natureza <br />
+        <input type="radio" name="area" value="tecnico" id="input_tecnico" />
+        Técnico <br />
+        <input type="radio" name="area" value="pv" id="input_pv" /> Projeto de
+        Vida <br />
+        <input type="radio" name="area" value="pa" id="input_pa" /> Projeto do
+        Ano <br />
+      </div>
 
-        <div class="input_materias">   
-            <input type="radio" name = "area" value = "matematica" id="input_matematica"> Matemática <br>
-            <input type="radio" name = "area" value = "linguagens" id="input_linguagens"> Linguagens <br>
-            <input type="radio" name = "area" value = "humanas" id="input_humanas"> Humanas <br>
-            <input type="radio" name = "area" value = "natureza" id="input_natureza"> Natureza <br>
-            <input type="radio" name = "area" value = "tecnico" id="input_tecnico"> Técnico <br>
-            <input type="radio" name = "area" value = "pv" id="input_pv"> Projeto de Vida <br>
-            <input type="radio" name = "area" value = "pa" id="input_pa"> Projeto do Ano <br>
-        </div>
+      <p id="texto_escolha">
+        Agora digite a sua porcentagem de faltas nessa área:
+      </p>
 
-        <p id="texto_escolha">
-            Agora digite a sua porcentagem de faltas nessa área:
-        </p>
+      <input
+        id="input_porcentagem"
+        type="number"
+        placeholder="0 a 25"
+        min="0"
+        max="25"
+        step="1"
+        required
+      />
 
-        <input id="input_porcentagem" type="number"  placeholder="0 a 25" min="0" max="25" step="1" required>
+      <button name="botao_calcular" id="botao_calcular" onclick="calcular()">
+        Calcular
+      </button>
 
-        <button name = "botao_calcular" id = "botao_calcular" onclick = "calcular()" >
-            Calcular
-        </button>
+      <p id="texto_resultado"></p>
 
-        <p id="texto_resultado"></p>
+      <hr />
 
-        <hr>
+      <h1>Posso faltar amanhã?</h1>
 
-        <h1>Posso faltar amanhã?</h1>
+      <p id="texto_escolha">Quais aulas você vai ter?</p>
 
-        <p id="texto_escolha">
-            Quais aulas você vai ter?
-        </p>
+      <div class="input_materias2">
+        <span>Matemática</span>
 
-        <div class="input_materias2">
-            <span>Matemática</span>
+        <input
+          type="number"
+          name="area2"
+          id="input_matematica2"
+          min="0"
+          max="6"
+        />
 
-            <input type="number" name="area2" id="input_matematica2" min="0" max="6">
-            
-            <button class="btn_contador" onclick="mudar('input_matematica2', -1)">−</button>
-            <button class="btn_contador" onclick="mudar('input_matematica2', 1)">+</button>
+        <br />
+      </div>
+      <div class="input_materias2">
+        <span>Linguagens</span>
 
-            <br>
+        <input
+          type="number"
+          name="area"
+          id="input_linguagens2"
+          min="0"
+          max="6"
+        />
 
-        </div>
-        <div class="input_materias2">
-            <span>Linguagens</span>
+        <br />
+      </div>
+      <div class="input_materias2">
+        <span>Humanas</span>
 
-            <input type="number" name="area" id="input_linguagens2" min="0" max="6"> 
+        <input type="number" name="area2" id="input_humanas2" min="0" max="6" />
+        <br />
+      </div>
+      <div class="input_materias2">
+        <span>Natureza</span>
 
-            <button class="btn_contador" onclick="mudar('input_linguagens2', -1)">−</button>
-            <button class="btn_contador" onclick="mudar('input_linguagens2', 1)">+</button>
+        <input
+          type="number"
+          name="area2"
+          id="input_natureza2"
+          min="0"
+          max="6"
+        />
+        <br />
+      </div>
+      <div class="input_materias2">
+        <span>Técnico</span>
 
-            <br>
+        <input type="number" name="area2" id="input_tecnico2" min="0" max="6" />
+        <br />
+      </div>
+      <div class="input_materias2">
+        <span>Projeto de Vida</span>
 
-        </div>
-        <div class="input_materias2">
-            <span>Humanas</span>
+        <input type="number" name="area2" id="input_pv2" min="0" max="6" />
+        <br />
+      </div>
+      <div class="input_materias2">
+        <span>Projeto do Ano</span>
 
-            <input type="number" name="area2" id="input_humanas2" min="0" max="6"> 
+        <input type="number" name="area2" id="input_pa2" min="0" max="6" />
+      </div>
 
-            <button class="btn_contador" onclick="mudar('input_humanas2', -1)">−</button>
-            <button class="btn_contador" onclick="mudar('input_humanas2', 1)">+</button>
-            
-            <br>
+      <button
+        name="botao_calcular"
+        id="botao_calcular2"
+        onclick="calcular_dois()"
+      >
+        Calcular
+      </button>
 
-        </div>
-        <div class="input_materias2">
-             <span>Natureza</span>
+      <div id="res_mat" class="resultados2"></div>
+      <div id="res_lin" class="resultados2"></div>
+      <div id="res_hum" class="resultados2"></div>
+      <div id="res_nat" class="resultados2"></div>
+      <div id="res_tec" class="resultados2"></div>
+      <div id="res_pv" class="resultados2"></div>
+      <div id="res_pa" class="resultados2"></div>
 
-             <input type="number" name="area2" id="input_natureza2" min="0" max="6"> 
+      <hr />
 
-            <button class="btn_contador" onclick="mudar('input_natureza2', -1)">−</button>
-            <button class="btn_contador" onclick="mudar('input_natureza2', 1)">+</button>
+      <p id="texto_creditos">Projeto feito por:</p>
 
-            <br>
-        </div>
-        <div class="input_materias2">
-            <span>Técnico</span>
-            
-            <input type="number" name="area2" id="input_tecnico2" min="0" max="6"> 
+      <div class="fotos">
+        <a href="https://www.instagram.com/joanabaex/" target="_blank"
+          ><img src="fotos/Joana.jpg" alt="Joana"
+        /></a>
+        <a href="https://www.instagram.com/nunes.gui_/" target="_blank"
+          ><img src="fotos/Gago.jpg" alt="Gago"
+        /></a>
+        <a href="https://www.instagram.com/lk.gomesz/" target="_blank"
+          ><img src="fotos/lk.jpg" alt="Lukas"
+        /></a>
+        <a href="https://www.instagram.com/cedi_bruno/" target="_blank"
+          ><img src="fotos/bruno.jpg" alt="Bruno Ribeiro"
+        /></a>
+        <a href="https://www.instagram.com/nicolasyxz7/" target="_blank"
+          ><img src="fotos/nicolau.jpg" alt="Nicolas"
+        /></a>
+        <a href="https://www.instagram.com/fredssauro_art/" target="_blank"
+          ><img src="fotos/fred.jpg" alt="Fredssauro"
+        /></a>
+      </div>
 
-            <button class="btn_contador" onclick="mudar('input_tecnico2', -1)">−</button>
-            <button class="btn_contador" onclick="mudar('input_tecnico2', 1)">+</button>
-            
-            <br>
-        </div>
-        <div class="input_materias2">
-            <span>Projeto de Vida</span>
+      <footer>
+        <a href="explicacao.html" id="link_pagina2"
+          ><p>Como funciona o cálculo?</p></a
+        >
+      </footer>
 
-            <input type="number" name="area2" id="input_pv2" min="0" max="6"> 
-
-            <button class="btn_contador" onclick="mudar('input_pv2', -1)">−</button>
-            <button class="btn_contador" onclick="mudar('input_pv2', 1)">+</button>
-            
-            <br>
-        </div>
-        <div class="input_materias2">
-            <span>Projeto do Ano</span>
-
-            <input type="number" name="area2" id="input_pa2" min="0" max="6">
-
-            <button class="btn_contador" onclick="mudar('input_pa2', -1)">−</button>
-            <button class="btn_contador" onclick="mudar('input_pa2', 1)">+</button>
-        </div>
-
-        <button name = "botao_calcular" id = "botao_calcular2" onclick = "calcular_dois()">
-            Calcular
-        </button>
-
-        <div id="res_mat" class="resultados2"></div>
-        <div id="res_lin" class="resultados2"></div>
-        <div id="res_hum" class="resultados2"></div>
-        <div id="res_nat" class="resultados2"></div>
-        <div id="res_tec" class="resultados2"></div>
-        <div id="res_pv" class="resultados2"></div>
-        <div id="res_pa" class="resultados2"></div>
-
-
-        <hr>
-
-        <p id="texto_creditos">
-            Projeto feito por:
-        </p>
-
-        <div class="fotos">
-            <a href="https://www.instagram.com/joanabaex/" target="_blank"><img src="fotos/Joana.jpg" alt="Joana"></a>
-            <a href="https://www.instagram.com/nunes.gui_/" target="_blank"><img src="fotos/Gago.jpg" alt="Gago"></a>
-            <a href="https://www.instagram.com/lk.gomesz/" target="_blank"><img src="fotos/lk.jpg" alt="Lukas"></a>
-            <a href="https://www.instagram.com/cedi_bruno/" target="_blank"><img src="fotos/bruno.jpg" alt="Bruno Ribeiro"></a>
-            <a href="https://www.instagram.com/nicolasyxz7/" target="_blank"><img src="fotos/nicolau.jpg" alt="Nicolas"></a>
-            <a href="https://www.instagram.com/fredssauro_art/" target="_blank"><img src="fotos/fred.jpg" alt="Fredssauro"></a>
-       </div>
-
-       <footer>
-        
-        <a href="explicacao.html" id="link_pagina2"><p>Como funciona o cálculo?</p></a>
-        
-       </footer>
-
-        <script>
-
-        document.querySelectorAll('.input_materias2 input').forEach(function(input) {
-        input.addEventListener('keydown', function(e) {
-            e.preventDefault()
-        })
-        })
-
+      <script>
         function calcular() {
+          var txt = document.querySelector("p#texto_resultado");
+          var porcentagemInput = document.getElementById("input_porcentagem");
+          var areaSelecionada = document.querySelector(
+            'input[name="area"]:checked',
+          );
+          if (!areaSelecionada) {
+            txt.style.color = "red";
+            txt.innerHTML = "Selecione uma área!";
+          }
+          var quanto = Number(porcentagemInput.value.replace(",", "."));
 
-            var txt = document.querySelector('p#texto_resultado')
-            var porcentagemInput = document.getElementById("input_porcentagem")
-            var areaSelecionada = document.querySelector('input[name="area"]:checked')
-            if (!areaSelecionada) {
-                txt.style.color = "red"
-                txt.innerHTML = "Selecione uma área!"
+          if (isNaN(quanto)) {
+            txt.style.color = "red";
+            txt.innerHTML = "Digite uma porcentagem válida!";
+            return;
+          }
+          if (quanto >= 25) {
+            txt.style.color = "red";
+            txt.innerHTML = "Você já atingiu o limite de faltas!";
+            return;
+          }
+          var area = areaSelecionada.value;
+          var horas = {
+            matematica: 120,
+            linguagens: 200,
+            humanas: 160,
+            natureza: 120,
+            tecnico: 240,
+            pv: 40,
+            pa: 120,
+            todas: 1000,
+          };
+          var totalHoras;
+          if (area === "todas") {
+            var somaAulas = 0;
+            for (var key in horas) {
+              var aulas = ((((25 - quanto) * horas[key]) / 1000) * 60) / 50;
+              somaAulas += aulas;
             }
-            var quanto = Number(porcentagemInput.value.replace(",", "."))
-
-            if (isNaN(quanto)) {
-                txt.style.color = "red"
-                txt.innerHTML = "Digite uma porcentagem válida!"
-                return
-            }
-            if (quanto >= 25) {
-                txt.style.color = "red"
-                txt.innerHTML = "Você já atingiu o limite de faltas!"
-                return
-            }
-            var area = areaSelecionada.value
-            var horas = {
-                matematica: 120,
-                linguagens: 200,
-                humanas: 160,
-                natureza: 120,
-                tecnico: 240,
-                pv: 40,
-                pa: 120,
-                todas: 1000,
-            }
-            var totalHoras
-            if (area === "todas") {
-                var somaAulas = 0
-                for (var key in horas) {
-                    var aulas = ((25 - quanto) * horas[key] / 1000) * 60 / 50
-                    somaAulas += aulas
-                }
-                txt.style.color = "#125189"
-                txt.innerHTML = `Você pode faltar ${Math.trunc(aulas)} aulas no total!`
-            }
-            totalHoras = horas[area]
-            if (!totalHoras) {
-                txt.style.color = "#125189"
-                txt.innerHTML = "Área inválida!"
-                return
-            }
-            var aulas = ((25 - quanto) * totalHoras / 100) * 60 / 50
-            txt.style.color = "#125189"
-            if (Math.trunc(aulas) == 0) {
-                txt.style.color = "red"
-                txt.innerHTML = "Você já atingiu o limite de faltas!"
-                return
-            }
-            if (Math.trunc(aulas) == 1) {
-                txt.innerHTML = `Você pode faltar ${Math.trunc(aulas)} aula!`
-                return
-            }
-            if (Math.trunc(aulas) > 1) {
-                txt.innerHTML = `Você pode faltar ${Math.trunc(aulas)} aulas!`
-                return
-            }
-        }
-
-        function mudar(qual, numero) {
-            var total = 0
-            document.querySelectorAll('.input_materias2 input').forEach(function(input) {
-                total += Number(input.value)
-            })
-
-            var el = document.getElementById(qual)
-            var val = Number(el.value) + numero
-
-            if (val < 0) val = 0
-            if (numero > 0 && total >= 300) return
-
-            el.value = val === 0 ? '' : val
+            txt.style.color = "#125189";
+            txt.innerHTML = `Você pode faltar ${Math.trunc(aulas)} aulas no total!`;
+          }
+          totalHoras = horas[area];
+          if (!totalHoras) {
+            txt.style.color = "#125189";
+            txt.innerHTML = "Área inválida!";
+            return;
+          }
+          var aulas = ((((25 - quanto) * totalHoras) / 100) * 60) / 50;
+          txt.style.color = "#125189";
+          if (Math.trunc(aulas) == 0) {
+            txt.style.color = "red";
+            txt.innerHTML = "Você já atingiu o limite de faltas!";
+            return;
+          }
+          if (Math.trunc(aulas) == 1) {
+            txt.innerHTML = `Você pode faltar ${Math.trunc(aulas)} aula!`;
+            return;
+          }
+          if (Math.trunc(aulas) > 1) {
+            txt.innerHTML = `Você pode faltar ${Math.trunc(aulas)} aulas!`;
+            return;
+          }
         }
 
         function calcular_dois() {
-            var mat = Number(document.querySelector('input#input_matematica2').value)
-            var lin = Number(document.querySelector('input#input_linguagens2').value)
-            var hum = Number(document.querySelector('input#input_humanas2').value)
-            var nat = Number(document.querySelector('input#input_natureza2').value)
-            var tec = Number(document.querySelector('input#input_tecnico2').value)
-            var pv = Number(document.querySelector('input#input_pv2').value)
-            var pa = Number(document.querySelector('input#input_pa2').value)
-            var res_mat = document.querySelector('div#res_mat')
-            var res_lin = document.querySelector('div#res_lin')
-            var res_hum = document.querySelector('div#res_hum')
-            var res_nat = document.querySelector('div#res_nat')
-            var res_tec = document.querySelector('div#res_tec')
-            var res_pv = document.querySelector('div#res_pv')
-            var res_pa = document.querySelector('div#res_pa')
+          var mat = Math.trunc(
+            Number(document.querySelector("input#input_matematica2").value),
+          );
+          var lin = Math.trunc(
+            Number(document.querySelector("input#input_linguagens2").value),
+          );
+          var hum = Math.trunc(
+            Number(document.querySelector("input#input_humanas2").value),
+          );
+          var nat = Math.trunc(
+            Number(document.querySelector("input#input_natureza2").value),
+          );
+          var tec = Math.trunc(
+            Number(document.querySelector("input#input_tecnico2").value),
+          );
+          var pv = Number(document.querySelector("input#input_pv2").value);
+          var pa = Number(document.querySelector("input#input_pa2").value);
+          var res_mat = document.querySelector("div#res_mat");
+          var res_lin = document.querySelector("div#res_lin");
+          var res_hum = document.querySelector("div#res_hum");
+          var res_nat = document.querySelector("div#res_nat");
+          var res_tec = document.querySelector("div#res_tec");
+          var res_pv = document.querySelector("div#res_pv");
+          var res_pa = document.querySelector("div#res_pa");
 
-            if (mat >= 1) {
-                var totalhora = 120
-                var res = Math.floor(((mat*50)/(totalhora*60)*100)*100)/100
+          if (
+            mat > 36 ||
+            lin > 60 ||
+            hum > 48 ||
+            nat > 36 ||
+            tec > 72 ||
+            pv > 12 ||
+            pa > 36
+          ) {
+            res_pa.style.color = "red";
+            res_mat.innerHTML = "";
+            res_lin.innerHTML = "";
+            res_hum.innerHTML = "";
+            res_nat.innerHTML = "";
+            res_tec.innerHTML = "";
+            res_pv.innerHTML = "";
+            res_pa.innerHTML = `Insira valores válidos!`;
 
-                res_mat.innerHTML = `+${res}% de faltas em Matemática`
-            }  else {
-                res_mat.innerHTML = ""
-            }
-            
-            if (lin >= 1) {
-                var totalhora = 200
-                var res = Math.floor(((lin*50)/(totalhora*60)*100)*100)/100
+            return;
+          }
 
-                res_lin.innerHTML = `+${res}% de faltas em Linguagens`
-            } else {
-                res_lin.innerHTML = ""
-            }
+          if (mat >= 1) {
+            var totalhora = 120;
+            var res =
+              Math.floor(((mat * 50) / (totalhora * 60)) * 100 * 100) / 100;
 
-            if (hum >= 1) {
-                var totalhora = 160
-                var res = Math.floor(((hum*50)/(totalhora*60)*100)*100)/100
+            res_mat.innerHTML = `+${res}% de faltas em Matemática`;
+          } else {
+            res_mat.innerHTML = "";
+          }
 
-                res_hum.innerHTML = `+${res}% de faltas em Humanas`
-            } else {
-                res_hum.innerHTML = ""
-            }
+          if (lin >= 1) {
+            var totalhora = 200;
+            var res =
+              Math.floor(((lin * 50) / (totalhora * 60)) * 100 * 100) / 100;
 
-            if (nat >= 1) {
-                var totalhora = 120
-                var res = Math.floor(((nat*50)/(totalhora*60)*100)*100)/100
+            res_lin.innerHTML = `+${res}% de faltas em Linguagens`;
+          } else {
+            res_lin.innerHTML = "";
+          }
 
-                res_nat.innerHTML = `+${res}% de faltas em Natureza`
-            } else {
-                res_nat.innerHTML = ""
-            }
+          if (hum >= 1) {
+            var totalhora = 160;
+            var res =
+              Math.floor(((hum * 50) / (totalhora * 60)) * 100 * 100) / 100;
 
-            if (tec >= 1) {
-                var totalhora = 240
-                var res = Math.floor(((tec*50)/(totalhora*60)*100)*100)/100
+            res_hum.innerHTML = `+${res}% de faltas em Humanas`;
+          } else {
+            res_hum.innerHTML = "";
+          }
 
-                res_tec.innerHTML = `+${res}% de faltas no Técnico`
-            } else {
-                res_tec.innerHTML = ""
-            }
+          if (nat >= 1) {
+            var totalhora = 120;
+            var res =
+              Math.floor(((nat * 50) / (totalhora * 60)) * 100 * 100) / 100;
 
-            if (pv >= 1) {
-                var totalhora = 40
-                var res = Math.floor(((pv*50)/(totalhora*60)*100)*100)/100
+            res_nat.innerHTML = `+${res}% de faltas em Natureza`;
+          } else {
+            res_nat.innerHTML = "";
+          }
 
-                res_pv.innerHTML = `+${res}% de faltas em Projeto de Vida`
-            } else {
-                res_pv.innerHTML = ""
-            }
+          if (tec >= 1) {
+            var totalhora = 240;
+            var res =
+              Math.floor(((tec * 50) / (totalhora * 60)) * 100 * 100) / 100;
 
-            if (pa >= 1) {
-                var totalhora = 120
-                var res = Math.floor(((pa*50)/(totalhora*60)*100)*100)/100
+            res_tec.innerHTML = `+${res}% de faltas no Técnico`;
+          } else {
+            res_tec.innerHTML = "";
+          }
 
-                res_pa.innerHTML = `+${res}% de faltas em Projeto do ano`
-            } else {
-                res_pa.innerHTML = ""
-            }
+          if (pv >= 1) {
+            var totalhora = 40;
+            var res =
+              Math.floor(((pv * 50) / (totalhora * 60)) * 100 * 100) / 100;
 
+            res_pv.innerHTML = `+${res}% de faltas em Projeto de Vida`;
+          } else {
+            res_pv.innerHTML = "";
+          }
+
+          if (pa >= 1) {
+            var totalhora = 120;
+            var res =
+              Math.floor(((pa * 50) / (totalhora * 60)) * 100 * 100) / 100;
+
+            res_pa.innerHTML = `+${res}% de faltas em Projeto do ano`;
+          } else {
+            res_pa.innerHTML = "";
+          }
         }
-
-    </script>
+      </script>
     </main>
-</body>
+  </body>
 </html>
